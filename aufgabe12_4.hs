@@ -8,7 +8,20 @@ data Term = FactorType Factor | Prod Term Factor deriving Show
 data Factor = Lit Int | ExprType Expr deriving Show
 
 -- b)
--- Usage in GHCi? 
+-- Usage in GHCi?
+-- Simple example:
+-- evalTerm (Prod (FactorType (Lit 4)) (Lit 1))
+-- 
+-- We can see, Prod needs some arguments, that are to be found in Term 
+-- or Factor algebraic types respectivelly. So we need to give them to 
+-- the function
+--
+-- Advanced:
+-- evalTerm (Prod (FactorType (Lit 4)) (ExprType (TermType (FactorType 
+-- (Lit 1)))))
+--
+-- That is actually the same, as the example before, we just do a 
+-- round-trip trough other algebraic types
 evalExpr :: Expr -> Int
 evalExpr (TermType  a)	= evalTerm a
 evalExpr (NTermType a) 	= - (evalTerm a)
