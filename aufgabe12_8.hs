@@ -5,7 +5,7 @@ data Tree = Leaf Int | Branch Tree Tree
 -- Tree with 5 Leafs
 -- a)
 
-t = (Leaf) ((Leaf) ((Leaf) ((Leaf) (Leaf))))
+(Branch (Leaf 5) (Branch (Leaf 4) (Branch (Leaf 3) (Branch (Leaf 2) (Leaf 1)))))
 
 -- Graphical representation
 
