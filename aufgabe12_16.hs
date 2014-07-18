@@ -34,4 +34,16 @@ check (Branch t1 t2) k
 	| otherwise = False
 
 -- c)
+-- `test [1,0,2,2]` or `test [1,0,2,3]`
 
+test :: [Int] -> Bool
+test []		= True
+test (x:xs)
+	| (compare_test x xs) && (test xs) = True
+	| otherwise = False
+
+compare_test :: Int -> [Int] -> Bool
+compare_test x [] = True
+compare_test x (y:ys)
+	| x /= y && (compare_test x ys) = True
+	| otherwise = False
